@@ -1,2 +1,2 @@
-# thingiverse-collect
-Collects a random sample of STLs from Thingiverse using the Thingiverse API
+# craftml-analyze
+Analyzes CraftML model code for tag use frequency.
