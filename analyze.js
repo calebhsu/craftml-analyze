@@ -10,26 +10,40 @@ firebase.initializeApp( {
 var craftDb = firebase.database();
 var modelDbRef = craftDb.ref( 'docs' );
 
-var totalModels, modelArray;
+var modelCollection, modelSample;
+var tags, tagFrequency;
+var regex;
 
 modelDbRef.once( 'value', function( snapshot ){
-    totalModels = _.size( snapshot.val() );
-
-    // creates array of all model content
-    modelArray = _.map( snapshot.val(), function( val, key ){
-        return val[ 'content' ];
+    // creates array of indexed model code
+    modelCollection = _.pull(
+                      _.map( snapshot.val(), function( prop, modelId ){
+                            if( prop[ 'content' ] ){
+                                return prop[ 'content' ];
+                            }
+                      } ) , undefined );
+    modelCollection = _.mapKeys( modelCollection, function( content, index ){
+       return index;
     } );
-    modelArray = JSON.stringify( modelArray );
 
-    // snapshot.forEach( function( model ){
-    // } );
+    // gets random sample of 100 models
+    modelSample = _.sampleSize( modelCollection, 1 );
 
-    fs.writeFile( 'test.json', modelArray, function( err ){
+    regex = /(cube)(?!\/cube>)/gi;
+    console.log( ( modelSample[0].match( regex ) || [] ).length )
+
+    // tags = [ '<cube>', '<cylinder>', '<sphere>' ];
+    // tagFrequency = _.countBy( modelSample, )
+
+    modelSample = JSON.stringify( modelSample );
+
+    fs.writeFile( 'test.json', modelSample, function( err ){
         if( err ){
             return console.log(err);
         }
         console.log( "The file was successfully saved." );
     } );
+
 }, function( errorObject ){
     console.log("Failed" + errorObject)
 } );
