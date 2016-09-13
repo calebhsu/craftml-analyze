@@ -11,29 +11,37 @@ var craftDb = firebase.database();
 var modelDbRef = craftDb.ref( 'docs' );
 
 var modelCollection, modelSample;
-var tags, tagFrequency;
-var regex;
+
+var regexCube =     /<cube/gi;
+var regexCylinder = /<cylinder/gi;
+var regexSphere =   /<sphere/gi;
+
+var modelSampleSize = 100;
+var tagCounts = {
+                    'cube':     0,
+                    'cylinder': 0,
+                    'sphere':   0
+                }
 
 modelDbRef.once( 'value', function( snapshot ){
-    // creates array of indexed model code
+    // creates array of model code, excluding empty code
     modelCollection = _.pull(
                       _.map( snapshot.val(), function( prop, modelId ){
                             if( prop[ 'content' ] ){
                                 return prop[ 'content' ];
                             }
                       } ) , undefined );
-    modelCollection = _.mapKeys( modelCollection, function( content, index ){
-       return index;
+
+    // gets random sample of 100 models in array
+    modelSample = _.sampleSize( modelCollection, modelSampleSize );
+
+    _.forEach( modelSample , function( content, index ){
+        tagCounts[ 'cube' ]     += ( content.match( regexCube ) || [] ).length
+        tagCounts[ 'cylinder' ] += ( content.match( regexCylinder ) || [] ).length
+        tagCounts[ 'sphere' ]   += ( content.match( regexSphere ) || [] ).length
     } );
 
-    // gets random sample of 100 models
-    modelSample = _.sampleSize( modelCollection, 1 );
-
-    regex = /(cube)(?!\/cube>)/gi;
-    console.log( ( modelSample[0].match( regex ) || [] ).length )
-
-    // tags = [ '<cube>', '<cylinder>', '<sphere>' ];
-    // tagFrequency = _.countBy( modelSample, )
+    console.log( tagCounts )
 
     modelSample = JSON.stringify( modelSample );
 
