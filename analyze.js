@@ -1,6 +1,6 @@
 var firebase = require( 'firebase' );
-var _ = require( 'lodash' );
-var fs = require( 'fs' )
+var fs       = require( 'fs' )
+var _        = require( 'lodash' );
 
 firebase.initializeApp( {
     serviceAccount:  'serviceAccountCredentials.json',
@@ -55,5 +55,3 @@ modelDbRef.once( 'value', function( snapshot ){
 }, function( errorObject ){
     console.log("Failed" + errorObject)
 } );
-
-return;
