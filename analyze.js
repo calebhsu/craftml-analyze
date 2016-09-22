@@ -11,12 +11,12 @@ var craftDb = firebase.database();
 var modelDbRef = craftDb.ref( 'docs' );
 
 var modelCollection, modelSample;
+var modelSampleSize = 100;
 
 var regexCube =     /<cube/gi;
 var regexCylinder = /<cylinder/gi;
 var regexSphere =   /<sphere/gi;
 
-var modelSampleSize = 100;
 var tagCounts = {
                     'cube':     0,
                     'cylinder': 0,
@@ -35,17 +35,17 @@ modelDbRef.once( 'value', function( snapshot ){
     // gets random sample of 100 models in array
     modelSample = _.sampleSize( modelCollection, modelSampleSize );
 
+    // returns collection of tags & tag counts
     _.forEach( modelSample , function( content, index ){
         tagCounts[ 'cube' ]     += ( content.match( regexCube ) || [] ).length
         tagCounts[ 'cylinder' ] += ( content.match( regexCylinder ) || [] ).length
         tagCounts[ 'sphere' ]   += ( content.match( regexSphere ) || [] ).length
     } );
 
-    console.log( tagCounts )
+    console.log(tagCounts)
+    tagCounts = JSON.stringify( tagCounts );
 
-    modelSample = JSON.stringify( modelSample );
-
-    fs.writeFile( 'test.json', modelSample, function( err ){
+    fs.writeFile( 'tag-counts.json', tagCounts, function( err ){
         if( err ){
             return console.log(err);
         }
