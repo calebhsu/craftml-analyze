@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>CraftML Analysis</title>
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     
     <!-- ReactJS -->
     <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
@@ -12,11 +15,27 @@
 
     <!-- Recharts -->
     <script src="https://unpkg.com/recharts/umd/Recharts.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+
+    <!-- Lodash -->
+    <script src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
+
+    <script src="analyze.js"></script>
    
 </head>
 <body>
-    <div id="example"></div>
-    <script type="text/babel" src="components/vizualization.js"></script>
+    <nav>
+      <div class="nav-wrapper white">
+        <a href="#" class="brand-logo center black-text">CraftML Analysis</a>
+      </div>
+    </nav>
+    
+    <main class="container">
+      <div id="barchart"></div>
+      <script type="text/babel" src="components/vizualization.js"></script>
+    </main>
 
 </body>
 </html>
