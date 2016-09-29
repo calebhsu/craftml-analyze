@@ -5,9 +5,13 @@ Analyzes CraftML model code for tag use frequency.
 * Install [NodeJS](https://nodejs.org/en/)
 * Install dependencies
 
-```> npm install```
+  ```
+  > npm install
+  ```
 
 ## Usage
 * Run development server
 
-```> npm start```
+  ```
+  > npm start
+  ```
