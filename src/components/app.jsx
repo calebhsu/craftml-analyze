@@ -1,15 +1,18 @@
 import React from 'react';
+import Header from './header.jsx';
 import BarChartViz from './barchart.jsx';
 import data from 'json!../../tag-counts.json';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import styles from '../index.scss';
+import styles from '../main.scss';
 
-export default class App extends React.Component {
+export default class App extends React.Component{
   render() {
     return (
       <div>
-        <BarChartViz data={ data } />
+        <Header/>
+        <main className={ styles.container }>
+          <BarChartViz data={ data }/>
+        </main>
       </div>
     )
   }

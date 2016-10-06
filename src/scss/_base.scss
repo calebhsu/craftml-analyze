@@ -1,0 +1,35 @@
+/* Gobal Styles */
+h1, h2, h3 {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+header {
+  margin: 5em auto 4em;
+  text-align: center;
+  h1 {
+    font-size: 3em;
+    font-weight: 100;
+  }
+}
+
+h2 {
+  font-size: 1.2em;
+  font-weight: 400;
+  padding: 0.3em auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Helpers */
+.container {
+  margin: 0 auto;
+  min-height: 100%;
+  width: 80%;
+}
+
+/* Visualizations */
+.viz {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  margin: 0 auto;
+}
