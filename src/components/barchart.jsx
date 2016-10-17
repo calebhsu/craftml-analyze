@@ -1,7 +1,7 @@
 import React from 'react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
-import styles from '../main.scss';
+import styles from '../scss/main.scss';
 
 export default class BarChartViz extends React.Component{
   render(){
