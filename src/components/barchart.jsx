@@ -7,13 +7,11 @@ const COLORS = ['#00C49F', '#FFBB28', '#864A8E', '#FF8042', '#8AC926'];
 
 export default class BarChartViz extends React.Component {
   render(){
-    const tagCounts = this.props.data;
+    let tagCounts = this.props.data;
 
     return(
-      <div>
-        <h2>Tag Usage Frequency</h2>
-        <BarChart width={ 750 } height={ 400 } data={ tagCounts }
-                  className={ styles.viz }>
+      <div className={ styles.viz }>
+        <BarChart width={ 700 } height={ 400 } data={ tagCounts }>
           <XAxis dataKey="name"/>
           <YAxis/>
           <CartesianGrid strokeDasharray="3 3"/>
