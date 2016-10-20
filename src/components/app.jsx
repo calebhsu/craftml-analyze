@@ -12,7 +12,6 @@ export default class App extends React.Component{
     return (
       <div>
         <Header/>
-        <main>
           <div className="row">
             <div className="col-md-5">
               <h3>Tag Usage Frequency</h3>
@@ -22,7 +21,6 @@ export default class App extends React.Component{
               <BarChartViz data={ tagCounts }/>
             </div>
           </div>
-        </main>
       </div>
     )
   }
