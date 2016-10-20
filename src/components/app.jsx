@@ -15,7 +15,7 @@ export default class App extends React.Component{
         <main>
           <div className="row">
             <div className="col-md-5">
-              <h2>Tag Usage Frequency</h2>
+              <h3>Tag Usage Frequency</h3>
               <PieChartViz data={ tagCounts }/>
             </div>
             <div className="col-md-7">

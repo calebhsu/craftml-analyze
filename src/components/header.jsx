@@ -5,6 +5,7 @@ export default class Header extends React.Component{
     return(
       <header>
         <h1>CraftML Analyze</h1>
+        <h2>hover over charts for details</h2>
       </header>
     )
   }

@@ -14,9 +14,19 @@ header {
 }
 
 h2 {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-size: 1.3em !important;
+  font-style: italic;
+  margin: 0.7em auto;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+h3 {
+  color: rgba(0, 0, 0, 0.9);
   font-size: 1.2em !important;
   font-weight: 400 !important;
-  padding: 0.3em auto;
+  margin: 0.5em auto !important;
   text-align: center;
   text-transform: uppercase;
 }
