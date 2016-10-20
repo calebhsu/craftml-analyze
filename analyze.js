@@ -17,11 +17,15 @@ var modelSampleSize = 100;
 var regexCube =     /<cube/gi;
 var regexCylinder = /<cylinder/gi;
 var regexSphere =   /<sphere/gi;
+var regexDome =   /<dome/gi;
+var regexPrism =   /<prism/gi;
 
 var tagCounts = [
     { name: 'cube', count: 0 },
     { name: 'cylinder', count: 0 },
-    { name: 'sphere', count: 0 }
+    { name: 'sphere', count: 0 },
+    { name: 'dome', count: 0 },
+    { name: 'prism', count: 0 }
 ]
 
 modelDbRef.once( 'value', function( snapshot ){
@@ -41,6 +45,8 @@ modelDbRef.once( 'value', function( snapshot ){
         tagCounts[0].count += ( content.match( regexCube ) || [] ).length
         tagCounts[1].count += ( content.match( regexCylinder ) || [] ).length
         tagCounts[2].count += ( content.match( regexSphere ) || [] ).length
+        tagCounts[3].count += ( content.match( regexDome ) || [] ).length
+        tagCounts[4].count += ( content.match( regexPrism ) || [] ).length
     } );
 
     tagCounts = JSON.stringify( tagCounts );
